@@ -9,15 +9,16 @@ export default function User2() {
 
   const handleSubmit = (event) => {
     event.preventDefault();   // submit button을 눌으면 페이지가 자동적으로 바뀌는것을 방지
-    const user = users.find(val => val.id == form.id);
-    const newUsers = [];
-    if (user) {
-      for (let val of users)
-        if (val.id == form.id)
-          newUsers.push(form);
-        else
-          newUsers.push(val);
-      setUsers(newUsers);
+    const existUser = users.find(val => val.id === form.id);
+    // const newUsers = [];
+    if (existUser) {
+      setUsers(users.map(user => (users.id === form.id) ? form : user))
+      // for (let val of users)
+      //   if (val.id == form.id)
+      //     newUsers.push(form);
+      //   else
+      //     newUsers.push(val);
+      // setUsers(newUsers);
     } else
       setUsers([...users, form]);
       
@@ -63,7 +64,7 @@ export default function User2() {
       </form>
       <button onClick={ () => {
         const id = prompt('ID 값을 입력하세요.')
-        setUsers(users.filter(x => x.id != id));
+        setUsers(users.filter(x => x.id !== id));
       }}>삭제</button>
     </div>
   );
