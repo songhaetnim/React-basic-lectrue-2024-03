@@ -1,5 +1,6 @@
 import '../apps/App.css';
 
+
 export default function Header( {filters, filter, onFiterChange}) {
    return(
     <haader>
@@ -16,6 +17,4 @@ export default function Header( {filters, filter, onFiterChange}) {
     </haader>
    );
 }
-  
-  
   
